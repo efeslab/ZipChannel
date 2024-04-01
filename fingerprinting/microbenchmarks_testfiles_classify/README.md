@@ -1,4 +1,4 @@
-This directory contains the microbenchmark experiment from ZipChannel.
+This directory contains the microbenchmark experiment from ZipChannel, where we classify files with different repetitiveness factor based on the way Bzip2 compresses them.
 
 To run the data collection, we first generate the files using the script [`generate_testfiles.py`](generate_testfiles.py). We then use [`../run_microbenchmarks.sh`](../run_microbenchmarks.sh) to run the attacker alongside the victim and collect traces into `../microbenchmarks_testfiles_data`
 ```
