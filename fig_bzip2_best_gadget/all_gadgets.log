@@ -1,0 +1,513 @@
+tag = 1688
+	==============================
+	[33mtaint source[0m
+	data (1 bytes from 0x00007ff940a0f4f8): 41 	[A]
+	==============================
+	0x00007ff9445a784d /usr/lib/libc.so.6![38;5;69mSymbol unavailable[0m+-1
+	  0x00007ff9445a784d  c5 fe 6f 06          vmovdqu (%rsi)[32byte] -> %ymm0
+	data (32 bytes from 0x00007ff940a0f4e0): 0d 0a 0d 0a 0d 0a 0d 0a 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 41 4c 49 43 45 27 53 20 	[                        ALICE'S ]
+	==============================
+	0x00007ff9445a7a26 /usr/lib/libc.so.6![38;5;69mSymbol unavailable[0m+-1
+	  0x00007ff9445a7a26  c5 fe 7f 01          vmovdqu %ymm0 -> (%rcx)[32byte]
+	data (32 bytes to 0x00007ffe343d4900): 0d 0a 0d 0a 0d 0a 0d 0a 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 41 4c 49 43 45 27 53 20 	[                        ALICE'S ]
+	==============================
+	0x00007ff944c4fe29 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1017
+	  0x00007ff944c4fe29  44 0f b6 1e          movzx  (%rsi)[1byte] -> %r11d
+	data (1 bytes from 0x00007ffe343d4918): 41 	[A]
+	==============================
+	0x00007ff944c4fdda /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+938
+	  0x00007ff944c4fdda  44 89 5b 5c          mov    %r11d -> 0x5c(%rbx)[4byte]
+	data (4 bytes to 0x00007ff940a01b5c): 41 00 00 00 	[A   ]
+	==============================
+	0x00007ff944c4fe22 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1010
+	  0x00007ff944c4fe22  8b 7b 5c             mov    0x5c(%rbx)[4byte] -> %edi
+	data (4 bytes from 0x00007ff940a01b5c): 41 00 00 00 	[A   ]
+	==============================
+	0x00007ff944c4fe60 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1072
+	  0x00007ff944c4fe60  31 f9                xor    %edi %ecx -> %ecx
+	rcx = a9 00 00 00 00 00 00 00 [        ]
+	rdi = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	0x00007ff944c4fe62 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1074
+	  0x00007ff944c4fe62  0f b6 c9             movzx  %cl -> %ecx
+	rcx = e8 00 00 00 00 00 00 00 [        ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c4fe65 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1077
+	  0x00007ff944c4fe65  33 04 8e             xor    (%rsi,%rcx,4)[4byte] %eax -> %eax
+	rcx = e8 00 00 00 00 00 00 00 [        ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	rsi = 80 61 c5 44 f9 7f 00 00 [ a D    ] (tainted)
+		      80: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|
+		      81: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |
+		      82: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      83: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      84: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      85: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      86: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      87: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		          |63|62|61|60|59|58|57|56|55|54|53|52|51|50|49|48|47|46|45|44|43|42|41|40|39|38|37|36|35|34|33|32|31|30|29|28|27|26|25|24|23|22|21|20|19|18|17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c4fe6e /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1086
+	  0x00007ff944c4fe6e  89 f8                mov    %edi -> %eax
+	rdi = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c4fe70 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1088
+	  0x00007ff944c4fe70  c6 84 03 80 00 00 00 mov    $0x01 -> 0x80(%rbx,%rax)[1byte]
+                      01
+	rax = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	rbx = 00 1b a0 40 f9 7f 00 00 [   @    ]
+	==============================
+	0x00007ff944c4fe7c /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1100
+	  0x00007ff944c4fe7c  40 88 3c 10          mov    %dil -> (%rax,%rdx)[1byte]
+	data (1 bytes to 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c47136 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+198
+	  0x00007ff944c47136  41 0f b6 44 16 ff    movzx  0xffffffff(%r14,%rdx)[1byte] -> %eax
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c4713c /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+204
+	  0x00007ff944c4713c  c1 e0 08             shl    $0x00000008 %eax -> %eax
+	rax = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	0x00007ff944c4713f /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+207
+	  0x00007ff944c4713f  09 c8                or     %ecx %eax -> %eax
+	rax = 00 41 00 00 00 00 00 00 [ A      ] (tainted)
+	rcx = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	==============================
+	0x00007ff944c47141 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+209
+	  0x00007ff944c47141  48 63 c8             movsxd %eax -> %rcx
+	rax = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	0x00007ff944c47144 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+212
+	  0x00007ff944c47144  c1 f8 08             sar    $0x00000008 %eax -> %eax
+	rax = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47147 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+215
+	  0x00007ff944c47147  83 04 8e 01          add    $0x00000001 (%rsi,%rcx,4)[4byte] -> (%rsi,%rcx,4)[4byte]
+	rcx = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |
+		    1689: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|
+		          |15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	rsi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	==============================
+	0x00007ff944c4714b /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+219
+	  0x00007ff944c4714b  89 c1                mov    %eax -> %ecx
+	rax = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	0x00007ff944c4715b /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+235
+	  0x00007ff944c4715b  09 c8                or     %ecx %eax -> %eax
+	rax = 00 0c 00 00 00 00 00 00 [        ]
+	rcx = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	0x00007ff944c4715d /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+237
+	  0x00007ff944c4715d  48 63 c8             movsxd %eax -> %rcx
+	rax = 41 0c 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47163 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+243
+	  0x00007ff944c47163  83 04 8e 01          add    $0x00000001 (%rsi,%rcx,4)[4byte] -> (%rsi,%rcx,4)[4byte]
+	rcx = 41 0c 00 00 00 00 00 00 [A       ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	rsi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	==============================
+	0x00007ff944c471eb /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+379
+	  0x00007ff944c471eb  41 0f b6 14 06       movzx  (%r14,%rax)[1byte] -> %edx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c471f2 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+386
+	  0x00007ff944c471f2  88 14 01             mov    %dl -> (%rcx,%rax)[1byte]
+	data (1 bytes to 0x00007ff943d9ab98): 41 	[A]
+	==============================
+	0x00007ff944c4727c /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+524
+	  0x00007ff944c4727c  41 0f b6 4c 16 ff    movzx  0xffffffff(%r14,%rdx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c47282 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+530
+	  0x00007ff944c47282  c1 e1 08             shl    $0x00000008 %ecx -> %ecx
+	rcx = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	0x00007ff944c47285 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+533
+	  0x00007ff944c47285  09 c8                or     %ecx %eax -> %eax
+	rax = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	rcx = 00 41 00 00 00 00 00 00 [ A      ] (tainted)
+	==============================
+	0x00007ff944c47287 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+535
+	  0x00007ff944c47287  0f b7 c8             movzx  %ax -> %ecx
+	rax = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	0x00007ff944c4728a /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+538
+	  0x00007ff944c4728a  66 c1 e8 08          data16 shr    $0x0008 %ax -> %ax
+	rax = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	0x00007ff944c4728e /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+542
+	  0x00007ff944c4728e  4c 8d 04 8f          lea    (%rdi,%rcx,4) -> %r8
+	rdi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	rcx = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47292 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+546
+	  0x00007ff944c47292  41 8b 08             mov    (%r8)[4byte] -> %ecx
+	r8 = 40 f5 9c 44 f9 7f 00 00 [@  D    ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |
+		    1689: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |
+		          |17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47298 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+552
+	  0x00007ff944c47298  41 89 08             mov    %ecx -> (%r8)[4byte]
+	r8 = 40 f5 9c 44 f9 7f 00 00 [@  D    ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |
+		    1689: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |
+		          |17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c472af /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+575
+	  0x00007ff944c472af  09 c8                or     %ecx %eax -> %eax
+	rax = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+	rcx = 00 0c 00 00 00 00 00 00 [        ]
+	==============================
+	0x00007ff944c472b1 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+577
+	  0x00007ff944c472b1  0f b7 c8             movzx  %ax -> %ecx
+	rax = 41 0c 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	0x00007ff944c472b8 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+584
+	  0x00007ff944c472b8  4c 8d 04 8f          lea    (%rdi,%rcx,4) -> %r8
+	rdi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	rcx = 41 0c 00 00 00 00 00 00 [A       ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c472bc /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+588
+	  0x00007ff944c472bc  41 8b 08             mov    (%r8)[4byte] -> %ecx
+	r8 = 14 21 9c 44 f9 7f 00 00 [ ! D    ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |
+		          | 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c472c2 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+594
+	  0x00007ff944c472c2  41 89 08             mov    %ecx -> (%r8)[4byte]
+	r8 = 14 21 9c 44 f9 7f 00 00 [ ! D    ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |
+		          | 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c47b96 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+2854
+	  0x00007ff944c47b96  41 0f b6 34 0f       movzx  (%r15,%rcx)[1byte] -> %esi
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47b9b /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+2859
+	  0x00007ff944c47b9b  80 bc 34 80 11 00 00 cmp    0x00001180(%rsp,%rsi)[1byte] $0x00
+                      00
+	rsp = 40 33 3d 34 fe 7f 00 00 [@3=4    ]
+	rsi = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47ba5 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+2869
+	  0x00007ff944c47ba5  48 63 8c b4 80 09 00 movsxd 0x00000980(%rsp,%rsi,4)[4byte] -> %rcx
+                      00
+	rsp = 40 33 3d 34 fe 7f 00 00 [@3=4    ]
+	rsi = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47bb4 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+2884
+	  0x00007ff944c47bb4  44 89 8c b4 80 09 00 mov    %r9d -> 0x00000980(%rsp,%rsi,4)[4byte]
+                      00
+	rsp = 40 33 3d 34 fe 7f 00 00 [@3=4    ]
+	rsi = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c46dfc /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+28
+	  0x00007ff944c46dfc  0f b6 14 10          movzx  (%rax,%rdx)[1byte] -> %edx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46dfc /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+28
+	  0x00007ff944c46dfc  0f b6 14 10          movzx  (%rax,%rdx)[1byte] -> %edx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46e00 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+32
+	  0x00007ff944c46e00  0f b6 0c 08          movzx  (%rax,%rcx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46e00 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+32
+	  0x00007ff944c46e00  0f b6 0c 08          movzx  (%rax,%rcx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46e00 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+32
+	  0x00007ff944c46e00  0f b6 0c 08          movzx  (%rax,%rcx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46e00 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+32
+	  0x00007ff944c46e00  0f b6 0c 08          movzx  (%rax,%rcx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46dfc /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+28
+	  0x00007ff944c46dfc  0f b6 14 10          movzx  (%rax,%rdx)[1byte] -> %edx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46dfc /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+28
+	  0x00007ff944c46dfc  0f b6 14 10          movzx  (%rax,%rdx)[1byte] -> %edx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46e00 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+32
+	  0x00007ff944c46e00  0f b6 0c 08          movzx  (%rax,%rcx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46e00 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+32
+	  0x00007ff944c46e00  0f b6 0c 08          movzx  (%rax,%rcx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46e00 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+32
+	  0x00007ff944c46e00  0f b6 0c 08          movzx  (%rax,%rcx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c46dfc /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainGtU[0m+28
+	  0x00007ff944c46dfc  0f b6 14 10          movzx  (%rax,%rdx)[1byte] -> %edx
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	0x00007ff944c48a8e /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mgenerateMTFValues[0m+270
+	  0x00007ff944c48a8e  41 0f b6 04 04       movzx  (%r12,%rax)[1byte] -> %eax
+	data (1 bytes from 0x00007ff943d7601d): 41 	[A]
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c48a93 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mgenerateMTFValues[0m+275
+	  0x00007ff944c48a93  44 0f b6 94 05 80 01 movzx  0x00000180(%rbp,%rax)[1byte] -> %r10d
+                      00 00
+	rax = 41 00 00 00 00 00 00 00 [A       ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	rbp = 00 1b a0 40 f9 7f 00 00 [   @    ]
+tag = 1689
+	==============================
+	[33mtaint source[0m
+	data (1 bytes from 0x00007ff940a0f4f9): 4c 	[L]
+	==============================
+	0x00007ff9445a784d /usr/lib/libc.so.6![38;5;69mSymbol unavailable[0m+-1
+	  0x00007ff9445a784d  c5 fe 6f 06          vmovdqu (%rsi)[32byte] -> %ymm0
+	data (32 bytes from 0x00007ff940a0f4e0): 0d 0a 0d 0a 0d 0a 0d 0a 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 41 4c 49 43 45 27 53 20 	[                        ALICE'S ]
+	==============================
+	0x00007ff9445a7a26 /usr/lib/libc.so.6![38;5;69mSymbol unavailable[0m+-1
+	  0x00007ff9445a7a26  c5 fe 7f 01          vmovdqu %ymm0 -> (%rcx)[32byte]
+	data (32 bytes to 0x00007ffe343d4900): 0d 0a 0d 0a 0d 0a 0d 0a 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 41 4c 49 43 45 27 53 20 	[                        ALICE'S ]
+	==============================
+	0x00007ff944c4fe29 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1017
+	  0x00007ff944c4fe29  44 0f b6 1e          movzx  (%rsi)[1byte] -> %r11d
+	data (1 bytes from 0x00007ffe343d4919): 4c 	[L]
+	==============================
+	0x00007ff944c4fe83 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1107
+	  0x00007ff944c4fe83  44 89 5b 5c          mov    %r11d -> 0x5c(%rbx)[4byte]
+	data (4 bytes to 0x00007ff940a01b5c): 4c 00 00 00 	[L   ]
+	==============================
+	0x00007ff944c4fe22 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1010
+	  0x00007ff944c4fe22  8b 7b 5c             mov    0x5c(%rbx)[4byte] -> %edi
+	data (4 bytes from 0x00007ff940a01b5c): 4c 00 00 00 	[L   ]
+	==============================
+	0x00007ff944c4fe60 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1072
+	  0x00007ff944c4fe60  31 f9                xor    %edi %ecx -> %ecx
+	rcx = 13 00 00 00 00 00 00 00 [        ]
+	rdi = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	==============================
+	0x00007ff944c4fe62 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1074
+	  0x00007ff944c4fe62  0f b6 c9             movzx  %cl -> %ecx
+	rcx = 5f 00 00 00 00 00 00 00 [_       ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c4fe65 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1077
+	  0x00007ff944c4fe65  33 04 8e             xor    (%rsi,%rcx,4)[4byte] %eax -> %eax
+	rcx = 5f 00 00 00 00 00 00 00 [_       ] (tainted)
+		    1689: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	rsi = 80 61 c5 44 f9 7f 00 00 [ a D    ] (tainted)
+		      80: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|
+		      81: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |
+		      82: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      83: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      84: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      85: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      86: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		      87: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+		          |63|62|61|60|59|58|57|56|55|54|53|52|51|50|49|48|47|46|45|44|43|42|41|40|39|38|37|36|35|34|33|32|31|30|29|28|27|26|25|24|23|22|21|20|19|18|17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c4fe6e /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1086
+	  0x00007ff944c4fe6e  89 f8                mov    %edi -> %eax
+	rdi = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c4fe70 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1088
+	  0x00007ff944c4fe70  c6 84 03 80 00 00 00 mov    $0x01 -> 0x80(%rbx,%rax)[1byte]
+                      01
+	rax = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+		    1689: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	rbx = 00 1b a0 40 f9 7f 00 00 [   @    ]
+	==============================
+	0x00007ff944c4fe7c /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mhandle_compress.isra.0[0m+1100
+	  0x00007ff944c4fe7c  40 88 3c 10          mov    %dil -> (%rax,%rdx)[1byte]
+	data (1 bytes to 0x00007ff943d7601e): 4c 	[L]
+	==============================
+	0x00007ff944c47118 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+168
+	  0x00007ff944c47118  41 0f b6 0c 16       movzx  (%r14,%rdx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601e): 4c 	[L]
+	==============================
+	0x00007ff944c4711f /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+175
+	  0x00007ff944c4711f  c1 e1 08             shl    $0x00000008 %ecx -> %ecx
+	rcx = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	==============================
+	0x00007ff944c47122 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+178
+	  0x00007ff944c47122  09 c8                or     %ecx %eax -> %eax
+	rax = 49 00 00 00 00 00 00 00 [I       ] (tainted)
+	rcx = 00 4c 00 00 00 00 00 00 [ L      ] (tainted)
+	==============================
+	0x00007ff944c47124 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+180
+	  0x00007ff944c47124  48 63 c8             movsxd %eax -> %rcx
+	rax = 49 4c 00 00 00 00 00 00 [IL      ] (tainted)
+	==============================
+	0x00007ff944c47127 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+183
+	  0x00007ff944c47127  c1 f8 08             sar    $0x00000008 %eax -> %eax
+	rax = 49 4c 00 00 00 00 00 00 [IL      ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c4712a /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+186
+	  0x00007ff944c4712a  83 04 8e 01          add    $0x00000001 (%rsi,%rcx,4)[4byte] -> (%rsi,%rcx,4)[4byte]
+	rcx = 49 4c 00 00 00 00 00 00 [IL      ] (tainted)
+		    1689: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |
+		    1690: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|
+		          |15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	rsi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	==============================
+	0x00007ff944c4712e /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+190
+	  0x00007ff944c4712e  89 c1                mov    %eax -> %ecx
+	rax = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	==============================
+	0x00007ff944c4713f /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+207
+	  0x00007ff944c4713f  09 c8                or     %ecx %eax -> %eax
+	rax = 00 41 00 00 00 00 00 00 [ A      ] (tainted)
+	rcx = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	==============================
+	0x00007ff944c47141 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+209
+	  0x00007ff944c47141  48 63 c8             movsxd %eax -> %rcx
+	rax = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47147 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+215
+	  0x00007ff944c47147  83 04 8e 01          add    $0x00000001 (%rsi,%rcx,4)[4byte] -> (%rsi,%rcx,4)[4byte]
+	rcx = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |
+		    1689: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|
+		          |15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	rsi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	==============================
+	0x00007ff944c471eb /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+379
+	  0x00007ff944c471eb  41 0f b6 14 06       movzx  (%r14,%rax)[1byte] -> %edx
+	data (1 bytes from 0x00007ff943d7601e): 4c 	[L]
+	==============================
+	0x00007ff944c471f2 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+386
+	  0x00007ff944c471f2  88 14 01             mov    %dl -> (%rcx,%rax)[1byte]
+	data (1 bytes to 0x00007ff943d9ab99): 4c 	[L]
+	==============================
+	0x00007ff944c47254 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+484
+	  0x00007ff944c47254  41 0f b6 0c 16       movzx  (%r14,%rdx)[1byte] -> %ecx
+	data (1 bytes from 0x00007ff943d7601e): 4c 	[L]
+	==============================
+	0x00007ff944c4725d /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+493
+	  0x00007ff944c4725d  c1 e1 08             shl    $0x00000008 %ecx -> %ecx
+	rcx = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	==============================
+	0x00007ff944c47260 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+496
+	  0x00007ff944c47260  09 c8                or     %ecx %eax -> %eax
+	rax = 49 00 00 00 00 00 00 00 [I       ] (tainted)
+	rcx = 00 4c 00 00 00 00 00 00 [ L      ] (tainted)
+	==============================
+	0x00007ff944c47262 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+498
+	  0x00007ff944c47262  0f b7 c8             movzx  %ax -> %ecx
+	rax = 49 4c 00 00 00 00 00 00 [IL      ] (tainted)
+	==============================
+	0x00007ff944c47265 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+501
+	  0x00007ff944c47265  66 c1 e8 08          data16 shr    $0x0008 %ax -> %ax
+	rax = 49 4c 00 00 00 00 00 00 [IL      ] (tainted)
+	==============================
+	0x00007ff944c47269 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+505
+	  0x00007ff944c47269  4c 8d 04 8f          lea    (%rdi,%rcx,4) -> %r8
+	rdi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	rcx = 49 4c 00 00 00 00 00 00 [IL      ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c4726d /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+509
+	  0x00007ff944c4726d  41 8b 08             mov    (%r8)[4byte] -> %ecx
+	r8 = 34 21 9d 44 f9 7f 00 00 [4! D    ] (tainted)
+		    1689: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |
+		    1690: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |
+		          |17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47273 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+515
+	  0x00007ff944c47273  41 89 08             mov    %ecx -> (%r8)[4byte]
+	r8 = 34 21 9d 44 f9 7f 00 00 [4! D    ] (tainted)
+		    1689: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |
+		    1690: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |
+		          |17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c47285 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+533
+	  0x00007ff944c47285  09 c8                or     %ecx %eax -> %eax
+	rax = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+	rcx = 00 41 00 00 00 00 00 00 [ A      ] (tainted)
+	==============================
+	0x00007ff944c47287 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+535
+	  0x00007ff944c47287  0f b7 c8             movzx  %ax -> %ecx
+	rax = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	0x00007ff944c4728e /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+542
+	  0x00007ff944c4728e  4c 8d 04 8f          lea    (%rdi,%rcx,4) -> %r8
+	rdi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+	rcx = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47292 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+546
+	  0x00007ff944c47292  41 8b 08             mov    (%r8)[4byte] -> %ecx
+	r8 = 40 f5 9c 44 f9 7f 00 00 [@  D    ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |
+		    1689: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |
+		          |17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47298 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+552
+	  0x00007ff944c47298  41 89 08             mov    %ecx -> (%r8)[4byte]
+	r8 = 40 f5 9c 44 f9 7f 00 00 [@  D    ] (tainted)
+		    1688: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |
+		    1689: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |  |
+		          |17|16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c47b96 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+2854
+	  0x00007ff944c47b96  41 0f b6 34 0f       movzx  (%r15,%rcx)[1byte] -> %esi
+	data (1 bytes from 0x00007ff943d7601e): 4c 	[L]
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c47b9b /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+2859
+	  0x00007ff944c47b9b  80 bc 34 80 11 00 00 cmp    0x00001180(%rsp,%rsi)[1byte] $0x00
+                      00
+	rsp = 40 33 3d 34 fe 7f 00 00 [@3=4    ]
+	rsi = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+		    1689: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	==============================
+	0x00007ff944c48a8e /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mgenerateMTFValues[0m+270
+	  0x00007ff944c48a8e  41 0f b6 04 04       movzx  (%r12,%rax)[1byte] -> %eax
+	data (1 bytes from 0x00007ff943d7601e): 4c 	[L]
+	==============================
+	[31mTaint-dependent memory access
+	0x00007ff944c48a93 /home/mini/workspace/dynamoChannel/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mgenerateMTFValues[0m+275
+	  0x00007ff944c48a93  44 0f b6 94 05 80 01 movzx  0x00000180(%rbp,%rax)[1byte] -> %r10d
+                      00 00
+	rax = 4c 00 00 00 00 00 00 00 [L       ] (tainted)
+		    1689: | x| x| x| x| x| x| x| x|
+		          | 7| 6| 5| 4| 3| 2| 1| 0|
+	rbp = 00 1b a0 40 f9 7f 00 00 [   @    ]

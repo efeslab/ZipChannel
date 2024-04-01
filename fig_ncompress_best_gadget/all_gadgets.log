@@ -1,0 +1,55 @@
+tag = 1001
+	==============================
+	[33mtaint source[0m
+	data (1 bytes from 0x00007fb86b3fcb49): 20 	[ ]
+	==============================
+	0x00007fb86b2b4c7a /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+826
+	  0x00007fb86b2b4c7a  43 0f b6 44 25 00    movzx  0x00(%r13,%r12)[1byte] -> %eax
+	data (1 bytes from 0x00007fb86b3fcb49): 20 	[ ]
+	==============================
+	0x00007fb86b2b4c83 /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+835
+	  0x00007fb86b2b4c83  88 c3                mov    %al -> %bl
+	rax = 20 00 00 00 00 00 00 00 [        ] (tainted)
+	==============================
+	0x00007fb86b2b4c85 /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+837
+	  0x00007fb86b2b4c85  48 89 c6             mov    %rax -> %rsi
+	rax = 20 00 00 00 00 00 00 00 [        ] (tainted)
+	==============================
+	0x00007fb86b2b4c88 /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+840
+	  0x00007fb86b2b4c88  48 c1 e0 09          shl    $0x0000000000000009 %rax -> %rax
+	rax = 20 00 00 00 00 00 00 00 [        ] (tainted)
+	==============================
+	0x00007fb86b2b4c8c /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+844
+	  0x00007fb86b2b4c8c  48 31 d0             xor    %rdx %rax -> %rax
+	rax = 00 40 00 00 00 00 00 00 [ @      ] (tainted)
+	rdx = 0a 01 00 00 00 00 00 00 [        ]
+	==============================
+	0x00007fb86b2b4c8f /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+847
+	  0x00007fb86b2b4c8f  49 89 d9             mov    %rbx -> %r9
+	rbx = 20 00 0a 01 00 00 00 00 [        ] (tainted)
+	==============================
+	[31mTaint-dependent memory access
+	0x00007fb86b2b4c92 /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+850
+	  0x00007fb86b2b4c92  48 8b 4c c5 00       mov    0x00(%rbp,%rax,8)[8byte] -> %rcx
+	rax = 0a 41 00 00 00 00 00 00 [ A      ] (tainted)
+		    1001: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |
+		          |16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	rbp = c0 a1 2f 6b b8 7f 00 00 [  /k    ]
+	==============================
+	[31mTaint-dependent memory access
+	0x00007fb86b2b4d17 /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+983
+	  0x00007fb86b2b4d17  0f b7 04 46          movzx  (%rsi,%rax,2)[2byte] -> %eax
+	rax = 0a 41 00 00 00 00 00 00 [ A      ] (tainted)
+		    1001: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |  |
+		          |16|15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+	rsi = c0 a1 2b 6b b8 7f 00 00 [  +k    ]
+	==============================
+	0x00007fb86b2b4d25 /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+997
+	  0x00007fb86b2b4d25  48 21 f3             and    %rsi %rbx -> %rbx
+	rbx = 20 00 0a 01 00 00 00 00 [        ] (tainted)
+	rsi = ff ff 00 00 ff ff ff ff [        ]
+	==============================
+	0x00007fb86b2b4d2f /home/mini/workspace/dynamoChannel/ncompress/compress![38;5;69mcompress[0m+1007
+	  0x00007fb86b2b4d2f  48 09 c3             or     %rax %rbx -> %rbx
+	rax = 00 00 2a 01 00 00 00 00 [  *     ]
+	rbx = 20 00 00 00 00 00 00 00 [        ] (tainted)

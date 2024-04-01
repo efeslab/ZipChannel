@@ -1,0 +1,17 @@
+[31mTaint-dependent memory access[0m
+0x00007ff944c47147 /path/to/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+215
+  0x00007ff944c47147  83 04 8e 01          add    $0x00000001 (%rsi,%rcx,4)[4byte] -> (%rsi,%rcx,4)[4byte]
+rcx = 4c 41 00 00 00 00 00 00 [LA      ] (tainted)
+	    1688: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |
+	    1689: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|
+	          |15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+rsi = 10 f0 9b 44 f9 7f 00 00 [   D    ]
+==============================
+[31mTaint-dependent memory access[0m
+0x00007ff944c4712a /path/to/bzip2-1.0.6/libbz2.so.1.0.6![38;5;69mmainSort[0m+186
+  0x00007ff944c4712a  83 04 8e 01          add    $0x00000001 (%rsi,%rcx,4)[4byte] -> (%rsi,%rcx,4)[4byte]
+rcx = 49 4c 00 00 00 00 00 00 [IL      ] (tainted)
+	    1689: | x| x| x| x| x| x| x| x|  |  |  |  |  |  |  |  |
+	    1690: |  |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|
+	          |15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
+rsi = 10 f0 9b 44 f9 7f 00 00 [   D    ]

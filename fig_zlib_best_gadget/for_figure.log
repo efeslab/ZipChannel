@@ -1,0 +1,8 @@
+[31mTaint-dependent memory access[0m
+0x00007f43da2ff954 /path/to/libz.so.1.2.11![38;5;69mdeflate_slow[0m+468
+  0x00007f43da2ff954  66 89 02             data16 mov    %ax -> (%rdx)[2byte]
+rdx = 10 b7 43 d6 43 7f 00 00 [  C C   ] (tainted)
+	5750: | x| x| x| x| x|  |  |  |  |  |  |  |  |  |  |  |
+	5751: |  |  | x| x| x| x| x| x| x| x|  |  |  |  |  |  |
+	5752: |  |  |  |  |  |  |  | x| x| x| x| x| x| x| x|  |
+	      |15|14|13|12|11|10| 9| 8| 7| 6| 5| 4| 3| 2| 1| 0|
