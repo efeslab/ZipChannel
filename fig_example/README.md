@@ -1,7 +1,7 @@
 This figure is not incuded in the published version of the paper, however it provides a sinmple example to test TaintChannel on.
 
 Files in this folder explained:
-## [code.c](code.c), [file.txt](file.txt), [Makefile](Makefile)
+## [`code.c`](code.c), [file.txt](file.txt), [Makefile](Makefile)
 A simple application to read [file.txt](file.txt) into a buffer, and build an histogram of all of the bytes in the file. This code is losely based on the vulnerability in Bzip2 (but extremely simplified). Run Makefile to compile this file.
 
 ## [gen_log.sh](gen_log.sh)
