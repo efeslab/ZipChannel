@@ -41,7 +41,7 @@ make -j20 && time ./bin64/drrun -c ./api/bin/libmarina.so -- ../../ncompress/com
 ## Sample output
 We include directories with sample output from TaintChannel. Each of these has its own README.
 
-These directories contain the sample outputs from TaintChannel that were used for generating the figures:
+These directories contain the sample outputs from TaintChannel that were used for generating the figures:  
 [`fig_bzip2_best_gadget`](fig_bzip2_best_gadget)  
 [`fig_ncompress_best_gadget`](fig_ncompress_best_gadget)  
 [`fig_zlib_best_gadget`](fig_zlib_best_gadget)
