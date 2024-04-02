@@ -1,0 +1,9 @@
+[submodule "bzip2-1.0.6"]
+	path = bzip2-1.0.6
+	url = https://github.com/enthought/bzip2-1.0.6.git
+[submodule "ncompress"]
+	path = ncompress
+	url = https://github.com/vapier/ncompress.git
+[submodule "zlib/zlib"]
+	path = zlib/zlib
+	url = https://github.com/madler/zlib.git
