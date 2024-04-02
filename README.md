@@ -2,10 +2,8 @@
 This repository contains artifacts for ZipChannel. It contains the source code of TaintChannel and the code used for the fingerprinting attacks.
 
 ## TaintChannel
-The code in the directory [`dynamorio`](dynamorio) is originally from:
-
-cloned from	[https://github.com/DynamoRIO/dynamorio.git]
-
+The code in the directory [`dynamorio`](dynamorio) is originally from:  
+cloned from	[https://github.com/DynamoRIO/dynamorio.git]  
 At commit	`b991249321d88117ddabd0bdf953e233928cefae`
 
 The source code for TaintChannel is in: [`dynamorio/api/samples/marina.cpp`](dynamorio/api/samples/marina.cpp)
