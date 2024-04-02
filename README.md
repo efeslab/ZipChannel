@@ -21,7 +21,7 @@ to run, go to `dynamorio/Build`:
 ./bin64/drrun -c ./api/bin/libmarina.so -- bzip2 tmp.txt -kf
 ```
 
-## Source code of compresion libraries
+## Code we tested TaintChannel on
 We include the target libraries in submodules, to initialize them run:
 ```
 git submodule init
@@ -29,6 +29,8 @@ git submodule update
 ```
 
 Note: while [`ncompress`](ncompress) and [`bzip2-1.0.6`](bzip2-1.0.6) contain executables, because [`zlib`](zlib) is a library it amso contains a small code to run it as an executable.
+
+[`aes_T-table`](aes_T-table) contains main code that invokes the vulnerable path in the AES library already installed on the syetem.
 
 ## 
 From the directory [`dynamorio`](dynamorio), here are command lines for running different aplications with the TaintChannel:
