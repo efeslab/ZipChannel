@@ -1,4 +1,4 @@
-# ZipChannel-DynamoChannel
+# ZipChannel
 This repository contains artifacts for ZipChannel. It contains the source code of TaintChannel and the code used for the fingerprinting attacks.
 
 ## TaintChannel
