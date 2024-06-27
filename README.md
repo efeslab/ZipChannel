@@ -1,5 +1,5 @@
 # ZipChannel
-This repository contains artifacts for ZipChannel. It contains the source code of TaintChannel and the code used for the fingerprinting attacks.
+This repository contains artifacts for the ZipChannel paper, which be found [here](https://dsn2024uq.github.io/Proceedings/pdfs/DSN2024-6rvE3SSpzFYmysif75Dkid/410500a223/410500a223.pdf). The repository contains the source code of TaintChannel and the code used for the fingerprinting attacks.
 The code for the SGX attack from the paper is in these two repositories:
 * User code: https://github.com/efeslab/ZipChannel_SGX_attack
 * Kernel Driver: https://github.com/efeslab/ZipChannel_linux-sgx-driver
